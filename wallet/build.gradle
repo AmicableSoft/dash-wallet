@@ -34,6 +34,10 @@ dependencies {
     }
     compile 'com.github.tony19:logback-android-core:1.1.1-6'
     compile 'com.google.code.findbugs:jsr305:2.0.3'
+
+    compile(project(':native-scrypt'))
+    compile(project(':native-x11'))
+
     testCompile 'junit:junit:4.12'
 
     //Memory Leak Detection
@@ -114,19 +118,6 @@ android {
         exclude 'META-INF/services/sun.net.spi.nameservice.NameServiceDescriptor'
     }
 }
-
-task buildNativeScrypt(type: GradleBuild) {
-    buildFile = '../native-scrypt/build.gradle'
-    tasks = ['copy']
-}
-
-task buildNativeX11(type: GradleBuild) {
-    buildFile = '../native-x11/build.gradle'
-    tasks = ['copy']
-}
-
-preBuild.dependsOn 'buildNativeScrypt'
-preBuild.dependsOn 'buildNativeX11'
 
 clean {
     file('src/main/jniLibs').deleteDir()

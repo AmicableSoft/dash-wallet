@@ -5,6 +5,7 @@ local.properties
 .project
 .settings/
 .idea/
+.externalNativeBuild/
 *.iml
 bin/
 gen/
